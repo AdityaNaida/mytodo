@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--white);
+}
+
+:root {
+  --black: #171719;
+  --light-black: #232229;
+  --white: #f4f4f4;
+  --purple: #704dd970;
+  --green: #12b5794d;
+  --blue: #2195f356;
+  --font: "Manrope", sans-serif;
+  --radius: 1rem;
+}

@@ -1,0 +1,95 @@
+.container {
+  position: relative;
+  margin: 0 auto;
+  height: auto;
+  min-height: 100vh;
+  max-width: 40rem;
+  padding: 2rem;
+}
+.helloTxt {
+  color: var(--black);
+  font: 400 2rem var(--font);
+}
+
+.heading {
+  color: var(--black);
+  font: 600 3rem var(--font);
+}
+
+.floatBtn {
+  position: fixed;
+  top: 90%;
+  left: 50%;
+  z-index: 999;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 30rem;
+  font: 500 1.8rem var(--font);
+
+  color: var(--white);
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.addBtn {
+  background-color: #05d16b;
+}
+.closeBtn {
+  background-color: rgba(204, 24, 24, 0.911);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 0rem;
+}
+
+.label {
+  color: var(--light-black);
+  font: 500 1.5rem var(--font);
+}
+
+.inputFields {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  color: var(--light-black);
+  font: 400 1.5rem var(--font);
+  box-shadow: 0 0.2rem 0.8rem rgba(28, 28, 28, 0.08);
+  border: 0.1rem solid #e8e8e8;
+}
+
+.priorityContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.priorityBox > label {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+.priorityBox > input[type="radio"] {
+  accent-color: var(--purple);
+  background-color: var(--light-black);
+}
+
+.submitBtn {
+  background-color: #05d16bce;
+  font: 500 2rem var(--font);
+  padding: 0.8rem 1.5rem;
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 0rem;
+}
