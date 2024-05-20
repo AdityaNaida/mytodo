@@ -33,7 +33,14 @@
   margin-bottom: 1rem;
 }
 
-.deleteBtn {
+.todoControllers {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.deleteBtn,
+.editBtn {
   width: fit-content;
   place-self: flex-end;
   background-color: #ffffff1c;
@@ -51,7 +58,8 @@
 }
 
 .deleteBtn > i,
-.completeBtn > i {
+.completeBtn > i,
+.editBtn > i {
   font: 400 2rem var(--font);
   color: var(--light-black);
   cursor: pointer;
@@ -70,6 +78,12 @@
   color: #05d16b;
 }
 
+.editBtn:hover > i {
+  color: #05d16b;
+}
+.editBtn:hover {
+  background-color: #0bec431e;
+}
 .compeleted {
   background-color: #05d16b;
   animation: fadeOut 1s ease 0.1s 1 forwards;

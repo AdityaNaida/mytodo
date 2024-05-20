@@ -79,12 +79,19 @@
 }
 
 .submitBtn {
-  background-color: #05d16bce;
   font: 500 2rem var(--font);
   padding: 0.8rem 1.5rem;
   color: var(--white);
   border: none;
   border-radius: var(--radius);
+}
+
+.addBtn {
+  background-color: #05d16bce;
+}
+
+.updateBtn {
+  background-color: #2195f3;
 }
 
 .listContainer {

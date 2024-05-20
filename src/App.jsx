@@ -26,9 +26,9 @@ function reducer(todo, action) {
         if (todo.id === action.payload.id) {
           return {
             ...todo,
-            heading: todo.heading,
-            description: todo.description,
-            priority: todo.priority,
+            heading: action.payload.heading,
+            description: action.payload.description,
+            priority: action.payload.priority,
           };
         }
         return todo;
@@ -38,7 +38,6 @@ function reducer(todo, action) {
       return todo;
   }
 }
-
 function newTodo(todo) {
   return {
     id: Math.random(),
@@ -48,39 +47,58 @@ function newTodo(todo) {
     complete: false,
   };
 }
-
 export default function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [heading, setHeading] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("");
+  const [updateBtn, setUpdateBtn] = useState(false);
+  const [editTodoId, setEditTodoId] = useState(null);
   const [todos, dispatch] = useReducer(reducer, []);
-
   function visibilityHandler() {
     setIsVisible((prevState) => !prevState);
   }
   function onSubmitHandler(e) {
     e.preventDefault();
-
-    dispatch({
-      type: ACTION.ADD_TODO,
-      payload: {
-        heading: heading,
-        description: description,
-        priority: priority,
-      },
-    });
-
+    if (editTodoId) {
+      dispatch({
+        type: ACTION.EDIT_TODO,
+        payload: {
+          heading: heading,
+          description: description,
+          priority: priority,
+          id: editTodoId,
+        },
+      });
+      setEditTodoId(null);
+      setUpdateBtn(false);
+      setIsVisible(false);
+    } else {
+      dispatch({
+        type: ACTION.ADD_TODO,
+        payload: {
+          heading: heading,
+          description: description,
+          priority: priority,
+        },
+      });
+    }
     setHeading("");
     setDescription("");
     setPriority("");
   }
-
   function validatePriority(e) {
     e.preventDefault();
     alert("Select priority!");
   }
-
+  function editTodoHandler(todo) {
+    setHeading(todo.heading);
+    setDescription(todo.description);
+    setPriority(todo.priority);
+    setEditTodoId(todo.id);
+    setIsVisible(true);
+    setUpdateBtn(true);
+  }
   return (
     <>
       <div className="container">
@@ -177,13 +195,23 @@ export default function App() {
               </div>
             </div>
 
-            <button className="submitBtn">Add</button>
+            <button
+              className={`submitBtn ${updateBtn ? "updateBtn" : "addBtn"}`}
+            >
+              {updateBtn ? "Update" : "Add"}
+            </button>
           </form>
         )}
-
         <div className="listContainer">
           {todos.map((todo) => {
-            return <List todo={todo} dispatch={dispatch} key={todo.id} />;
+            return (
+              <List
+                todo={todo}
+                dispatch={dispatch}
+                key={todo.id}
+                editHandler={editTodoHandler}
+              />
+            );
           })}
         </div>
       </div>
